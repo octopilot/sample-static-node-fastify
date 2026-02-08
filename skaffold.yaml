@@ -1,0 +1,16 @@
+apiVersion: skaffold/v2beta29
+kind: Config
+metadata:
+  name: sample-static-node-fastify
+build:
+  local: {}
+  artifacts:
+    - image: sample-static-node-fastify-frontend
+      context: frontend
+      buildpacks:
+        builder: paketobuildpacks/builder-jammy-base
+    - image: sample-static-node-fastify-api
+      context: api
+      buildpacks:
+        builder: paketobuildpacks/builder-jammy-base
+deploy: {}
